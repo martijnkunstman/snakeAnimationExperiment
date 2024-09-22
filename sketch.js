@@ -1,9 +1,5 @@
 let flock = new Flock();
 
-let snakeLength = 8;
-let snakeSize = 30;
-let snakeShrinkFactor = 0.8;
-
 //--------------------------------------------
 
 function setup() {

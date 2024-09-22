@@ -54,10 +54,13 @@ class Snake {
     }
 
     draw() {
+      
       for (let i = this.bodyParts.length -1; i >= 0; i--) {
-        fill(255-i/(this.bodyParts.length-2)*255);
-        circle(this.bodyParts[i].x, this.bodyParts[i].y, this.bodyParts[i].size);
-        /*
+        //(255-i/(this.bodyParts.length-2)*255);
+        //circle(this.bodyParts[i].x, this.bodyParts[i].y, this.bodyParts[i].size);
+        
+        strokeWeight(this.bodyParts[i].size);
+        stroke(255-i/(this.bodyParts.length-2)*255);
         if (i < this.bodyParts.length - 1) {
           line(
             this.bodyParts[i].x,
@@ -66,8 +69,9 @@ class Snake {
             this.bodyParts[i + 1].y
           );
         }
-        */
+        
       }
+        
     }
 
     tick(x,y) {

@@ -7,10 +7,10 @@ class Boid {
     this.snake = new Snake(9, 30, 0.8, x, y);
 
     // Maximum speed
-    this.maxSpeed = 3;
+    this.maxSpeed = 5;
 
     // Maximum steering force
-    this.maxForce = 0.05;
+    this.maxForce = 0.1;
     //colorMode(HSB);
     //this.color = color(random(256), 255, 255);
   }
@@ -34,9 +34,9 @@ class Boid {
     let cohesion = this.cohesion(boids);
 
     // Arbitrarily weight these forces
-    separation.mult(1.5);
-    alignment.mult(1.0);
-    cohesion.mult(1.0);
+    separation.mult(1.8);
+    alignment.mult(1.1);
+    cohesion.mult(1.1);
 
     // Add the force vectors to acceleration
     this.applyForce(separation);
@@ -84,6 +84,7 @@ class Boid {
     let theta = this.velocity.heading() + radians(90);
     fill(0);
     stroke(255);
+    strokeWeight(1);
     push();
     translate(this.position.x, this.position.y);
     rotate(theta);
@@ -118,7 +119,7 @@ class Boid {
   // Separation
   // Method checks for nearby boids and steers away
   separate(boids) {
-    let desiredSeparation = 25.0;
+    let desiredSeparation = 30.0;
     let steer = createVector(0, 0);
     let count = 0;
 
@@ -160,7 +161,7 @@ class Boid {
   // Alignment
   // For every nearby boid in the system, calculate the average velocity
   align(boids) {
-    let neighborDistance = 50;
+    let neighborDistance = 80;
     let sum = createVector(0, 0);
     let count = 0;
     for (let i = 0; i < boids.length; i++) {
