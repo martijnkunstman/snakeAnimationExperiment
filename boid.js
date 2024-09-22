@@ -3,8 +3,8 @@ class Boid {
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(random(-1, 1), random(-1, 1));
     this.position = createVector(x, y);
-    this.size = 3.0;
-    this.snake = new Snake(9, 30, 0.8, x, y);
+    this.size = 4.0;
+    this.snake = new Snake(6, 30, 0.9, x, y);
 
     // Maximum speed
     this.maxSpeed = 5;
@@ -34,9 +34,9 @@ class Boid {
     let cohesion = this.cohesion(boids);
 
     // Arbitrarily weight these forces
-    separation.mult(1.8);
+    separation.mult(1.6);
     alignment.mult(1.1);
-    cohesion.mult(1.1);
+    cohesion.mult(1.2);
 
     // Add the force vectors to acceleration
     this.applyForce(separation);

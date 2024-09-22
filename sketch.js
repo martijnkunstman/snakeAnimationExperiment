@@ -3,7 +3,7 @@ let flock = new Flock();
 //--------------------------------------------
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1600, 800);
   background(0);
   stroke(1);
   strokeWeight(1);

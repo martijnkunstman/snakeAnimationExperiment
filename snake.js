@@ -1,8 +1,8 @@
 class Snake {
     //settable
-    lenght = 8;
-    size = 30;
-    shrinkFactor = 0.8;
+    lenght = 10;
+    size = 40;
+    shrinkFactor = 0.85;
     //private
     speed = 0;
     bodyParts = [];
@@ -20,7 +20,7 @@ class Snake {
     createBodyParts(x,y) {
       let size = this.size;
       for (let i = 0; i < this.lenght; i++) {
-        this.bodyParts.push({ x: y, y: y, size: size });
+        this.bodyParts.push({ x: x, y: y, size: size });
         size = size * this.shrinkFactor;
       }
     }
@@ -46,8 +46,8 @@ class Snake {
         let dy = this.bodyParts[i + 1].y - this.bodyParts[i].y;
         let angle = atan2(dy, dx);
         this.speed = mag(this.velocity.x, this.velocity.y);
-        let x = this.bodyParts[i].x + cos(angle) * this.bodyParts[i].size * (this.speed/this.maxSpeed);
-        let y = this.bodyParts[i].y + sin(angle) * this.bodyParts[i].size * (this.speed/this.maxSpeed);
+        let x = this.bodyParts[i].x + cos(angle) * this.bodyParts[i].size*2 * (this.speed/this.maxSpeed);
+        let y = this.bodyParts[i].y + sin(angle) * this.bodyParts[i].size*2 * (this.speed/this.maxSpeed);
         this.bodyParts[i + 1].x = x;
         this.bodyParts[i + 1].y = y;
       }
@@ -59,8 +59,9 @@ class Snake {
         //(255-i/(this.bodyParts.length-2)*255);
         //circle(this.bodyParts[i].x, this.bodyParts[i].y, this.bodyParts[i].size);
         
-        strokeWeight(this.bodyParts[i].size);
-        stroke(255-i/(this.bodyParts.length-2)*255);
+        strokeWeight(this.bodyParts[i].size/2);
+        //stroke(255-i/(this.bodyParts.length-2)*255,0.5);
+        stroke('rgba(255, 255, 255, ' + (((1-(i/(this.bodyParts.length))))/1.2) + ')');
         if (i < this.bodyParts.length - 1) {
           line(
             this.bodyParts[i].x,
